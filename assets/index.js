@@ -1,17 +1,27 @@
-const arrOptions = document.getElementsByTagName('option');
-let quantityOptions = 5;
-let arrLetters = [];
-let uniqueArrLetters = [];
+const select = document.getElementById('listOfLetters');
+const listOfNamesElem = document.getElementById('listOfNames');
+const quantityOptions = 5;
+const arrLetters = [];
+const uniqueArrLetters = [];
+let listOfNames = [];
 
 
-let promise = fetch('http:/list.json', )
+
+let promise = fetch('https://tartavik.github.io/Anton/list.json', )
   .then(res =>res.json())
-  .then(data=>{console.log('data from server',JSON.stringify(data))})
+  .then(data=>{ 
+  	if(data&&data.length){
+  		listOfNames = data;
+  		selectLetter(uniqueArrLetters[0])
+  	}
+  })
   .catch(err => {
     console.log('Failed fetch ', err);
   });
 
-console.log(promise)
+select.addEventListener('change',(e)=>{
+	selectLetter(e.currentTarget.value);
+})
 
 
 
@@ -20,30 +30,41 @@ for(let a = 10;a < 36;a++){
 };
 	
 for(;uniqueArrLetters.length < quantityOptions;){
-	givRandomNumber(0,arrLetters.length - 1);
+	const uniqueLetter = getUniqueLetter();
+	uniqueArrLetters.push(uniqueLetter);
+	const option = document.createElement('option');
+	option.innerText = uniqueLetter;
+	option.value = uniqueLetter;
+	select.appendChild(option);
 };
-
-if(uniqueArrLetters.length == quantityOptions){
-	addResultInOption();
-}	;
 
 function givRandomNumber (min,max) {
 	let randomNumber = Math.floor(min + Math.random() * (max + 1 - min));
-	addUniqueLetter(randomNumber);
+	return randomNumber;
 };
 
-function addUniqueLetter (number) {
-	if(uniqueArrLetters.indexOf(arrLetters[number]) == -1){
-		uniqueArrLetters.push(arrLetters[number])
-	}	
+function getUniqueLetter () {
+	let randomNumber = 0;
+	do{
+		randomNumber = givRandomNumber(0,arrLetters.length - 1);
+	}while(uniqueArrLetters.indexOf(arrLetters[randomNumber]) !== -1)
+	return arrLetters[randomNumber];
 };
 
-function addResultInOption () {
-	for(key in uniqueArrLetters){
-		arrOptions[key].innerText = uniqueArrLetters[key];
-		arrOptions[key].value = uniqueArrLetters[key];
+
+function selectLetter (firstLetter) {
+	listOfNamesElem.innerHTML = '';
+	const filteredlistOfNames = listOfNames.filter((el)=>{
+		return el.name[0].toLowerCase() === firstLetter;
+	})
+	if(filteredlistOfNames.length){
+		filteredlistOfNames.forEach((el)=>{
+			const li = document.createElement('li');
+			li.innerText = el.name;
+			listOfNamesElem.appendChild(li);
+		})
+	}else{
+		listOfNamesElem.innerText = 'The are no users with name starts on ' + firstLetter; 
 	}
-};
 
-
-
+}
