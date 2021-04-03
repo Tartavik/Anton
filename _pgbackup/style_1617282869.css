@@ -1,0 +1,13 @@
+.containerAboutOurActivity {
+    width: 100%;
+    margin-left: 40;
+    margin-right: 40;
+    display: flex;
+    font-family: Georgia;
+    color: #000000;
+    flex-basis: 0;
+}
+
+.mainContainer {
+    margin: 100;
+}
