@@ -1,4 +1,4 @@
-.main{
+.wrapper{
 
 	padding:  0 20px;
 	margin: auto;
@@ -158,7 +158,7 @@
 }
 
 footer{
-	margin: 35px auto;
+	margin: 35px auto 10px auto;
 	width: 960px;
 	display: flex;
 	flex-direction: row;
@@ -359,6 +359,8 @@ form input {
 	background-color: #383838;
 	border: none;
 	padding-left: 10px;
+	color: #999999;
+
 }
 
 form textarea {
@@ -368,58 +370,13 @@ form textarea {
 	border: none;
 	padding-left: 10px;
 	height: 130px;
+	resize: none;
+	color: #999999;
 }
 
 form button:hover {
 	background-color: #a7c31c;
 } 
-
-@media (max-width: 960px){
-	.main {
-		width: 100%;
-	}
-
-	.mainContainer {
-		width: calc(100% - 20px);
-	}
-
-	.carousel-item img {
-		height: calc(100% - 10px);
-	}
-
-	.carousel-control-prev-icon, .carousel-control-next-icon {
-		width: calc(80% - 10px);
-		height: calc(10% - 10px);
-	}
-
-	.containerAboutOurActivity {
-		flex-direction: column;
-	}
-
-	.about {
-		width: 100%;
-	}
-
-	footer {
-		width: 100%;
-		flex-direction:row;
-	}
-
-	.companyDetailsConteiner, .socialGroupsContainer, .blogContainer, .contactUsConteiner {
-		
-		justify-content: center;
-		align-items: center;
-		flex-basis: 50%;
-	}
-
-
-	.collective {
-		width: 100%;
-		height: 100%;
-	}
-}
-
-
 
 .linkedIn span {
 	display: inline-block;
@@ -477,3 +434,97 @@ form button:hover {
 .socialIcon:hover p {
 	color: #a7c31c;
 }
+
+.copyrightConteiner {
+	margin: auto;
+	padding: 20px 0px;
+	width: 960px;
+	display: flex;
+	justify-content: space-between;
+	font-size: 12px;
+	color: #999999;
+	border-top: 1px solid #3a3a3a;
+}
+
+@media (max-width: 960px){
+	.wrapper {
+		width: 100%;
+	}
+
+	.mainContainer {
+		width: calc(100% - 20px);
+	}
+
+	.carousel-item img {
+		height: calc(100% - 10px);
+	}
+
+	.carousel-control-prev-icon, .carousel-control-next-icon {
+		width: calc(80% - 10px);
+		height: calc(10% - 10px);
+	}
+
+	.containerAboutOurActivity {
+		flex-direction: column;
+	}
+
+	.about {
+		width: 100%;
+	}
+
+	footer {
+		width: 100%;
+		flex-direction:row;
+		flex-wrap: wrap;
+	}
+
+	.companyDetailsConteiner, .socialGroupsContainer, .blogContainer, .contactUsConteiner {
+		
+		justify-content: center;
+		align-items: center;
+		flex-basis: 48%;
+	}
+
+
+	.collective {
+		width: 100%;
+		height: 100%;
+	}
+
+	.collapse {
+		position: relative;
+    	z-index: 999;
+    	height: auto;
+	}
+
+	.collapse a {
+		margin: 0;
+	}
+
+	.collapse ul {
+		background-color: white;
+		width: 30% ;
+		border: 1px solid #a7c353;
+		text-align: center;
+		border-radius: 5px;
+	}
+
+
+}
+
+@media (max-width: 560px){
+	.companyDetailsConteiner, .socialGroupsContainer, .blogContainer, .contactUsConteiner {
+		flex-basis: 25%;
+	}
+
+	footer {
+		flex-direction: column;
+		align-items:center;
+	}
+
+	.collapse ul {
+		width: 40%;
+	}
+}
+
+
