@@ -478,6 +478,10 @@ form button:hover {
 		flex-wrap: wrap;
 	}
 
+	.copyrightConteiner{
+		width: 100%;
+	}
+
 	.companyDetailsConteiner, .socialGroupsContainer, .blogContainer, .contactUsConteiner {
 		
 		justify-content: center;
